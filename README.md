@@ -1,4 +1,4 @@
-#Engineering Economy Cheatsheet
+# Engineering Economy Cheatsheet
 
 - **<u>Terminology</u>:**
 	- i : Interest rate in %
@@ -7,6 +7,7 @@
 	- F : Future worth of money
 	- A : End of period cashflow or annuity
 	- G : Arithmetic gradient (amount by which cash flow is increased at the end of every period)
+	- MARR : Minimum Attractive Rate of Return
 
 <br />
 
@@ -66,3 +67,62 @@
 	$$P=\frac{F_{N}}{\prod_{k=1}^N (1+i)^k}$$
 
 ### Methods for making economic studies
+
+- **Present worth method (PWM):**
+	- To determine a project's economic worthiness, we simply compute the present equivalent of all cash flows using the MARR as the interest rate
+	- If the present worth is greater than or equal to zero, the project is acceptable
+	- $$PW(i\%)=\sum_{k=0}^NF_{k}(1+i)^{-k}$$
+<br />
+
+
+- **Future worth method (FWM):**
+	- The FW is based on the equivalent worth of all cash inflows and outflows at the end of the planning horizon (study period) at an interest rate that is generally the MARR
+	- If $FW(i=MARR)\geq0$, the project is economically justified
+	- $$FW(i\%)=\sum_{k=0}^NF_{k}(1+i)^{N-k}$$
+
+<br />
+
+- **Annual worth method (AWM):**
+	- $$AW(i\%)=R-E-CR(i\%)$$
+	where, $R=\text{annual equivalent revenues}$
+	$E=\text{annual equivalent capital}$
+	$CR=\text{annual equivalent capital recovery}$
+	<br>
+	- $$CR(i\%)=I\left( \frac{A}{P},\ i\%,\ N \right)-S\left( \frac{A}{F},\ i\%,\ N \right)$$
+	where, $I=\text{initial investment for the project}$
+	$S=\text{salvage value at the end of the study period}$
+	$N=\text{project study period}$
+	<br>
+	- If $AW\geq0$, the project is economically justified
+<br>
+- **Net present value (NPV) with time:**
+	- NPV with annual outflow (A) varying
+		$$=\sum_{t=1}^N\frac{C_{t}}{(1+r)^t}-IV$$
+		where, $C_{t}=\text{cash flow at the end of year t}$
+		$r=\text{rate of discount}$
+		$IV=\text{initial investment}$
+	<br>
+	- NPV with time-varying discounts
+		$$=\sum_{t=1}^N\frac{C_{t}}{\prod_{j=1}^t(1+r_{j})}-IV$$
+<br>
+- **Benefit Cost Ratio:**
+	- $BCR=\frac{PVB}{I}$ where $PVB=\text{present value of all benefits,}\ I=\text{initial investment}$
+	- Net BCR (NBCR) $=\frac{PVB-I}{I}=BCR-1$
+	- $BCR>1,\ \text{accept}$
+		$BCR<1,\ \text{reject}$
+		$BCR=1,\ \text{indifferent}$
+<br>
+- **Internal Rate of Return Method (IRR):**
+	- IRR is the $i'\%$ at which $$\sum_{k=0}^NR_{k}\left( \frac{P}{F},\ i'\%,\ k \right)=\sum_{k=0}^NE_{k}\left( \frac{P}{F},\ i'\%,\ k \right)$$
+	where, $R_{k}=\text{net revenues or savings for the kth year}$
+	$E_{k}=\text{net expenditures}$
+	- In other words, IRR is the discount rate at which NPV is 0
+	- If $IRR\geq MARR$, project is economically feasible'
+<br>
+- **Modified IRR (MIRR):**
+	The procedure to find MIRR is
+	- $PVC=\sum_{t=0}^N\frac{\text{Cash outflow}_{t}}{(1+r)^t}$
+	- Calculate terminal value (TV) of cash inflows
+	$TV=\sum_{t=0}^N\text{Cash inflow}_{t}(1+r)^{N-t}$
+	- Obtain MIRR using
+	$PVC=\frac{TV}{(1+MIRR)^N}$
